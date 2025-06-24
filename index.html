@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skeprojet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home">Accueil</a></li>
+      <li><a href="#subject">Sujet</a></li>
+      <li><a href="#notes">Notes</a></li>
+      <li><a href="#chat">IA</a></li>
+    </ul>
+  </nav>
+
+  <!-- EN-TÊTE -->
+  <header id="home">
+    <img src="logo.png" alt="Logo" class="logo" />
+    <h1>Bienvenue sur Skeprojet</h1>
+    <p>Ton assistant mémoire intelligent ✨</p>
+  </header>
+
+  <!-- SECTION SUJET -->
+  <section id="subject" class="subject">
+    <h2>Besoin d’un sujet ?</h2>
+    <button onclick="generateSubject()">🎲 Générer un sujet</button>
+    <p id="generated-subject" class="subject-box"></p>
+  </section>
+
+  <!-- SECTION NOTES -->
+  <section id="notes" class="notepad">
+    <h3>Prends des notes :</h3>
+    <textarea id="notes-area" placeholder="Écris ici tes idées..."></textarea><br />
+    <button onclick="saveNotes()">💾 Enregistrer</button>
+    <button onclick="clearNotes()">🗑️ Effacer</button>
+    <button onclick="downloadNotes()">📥 Télécharger</button>
+  </section>
+
+  <!-- SECTION IA -->
+  <section id="chat" class="chatbox">
+    <h2>🤖 Pose une question à l'IA</h2>
+    <input type="text" id="user-input" placeholder="Ex. Donne-moi un sujet de mémoire" />
+    <button onclick="askAI()">Envoyer</button>
+    <div id="chat-response"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon.png" type="image/png" />
+<meta name="theme-color" content="#4CAF50" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log('✅ Service Worker actif'))
+      .catch(err => console.log('❌ Erreur SW', err));
+  });
+}
+
